@@ -1,0 +1,18 @@
+xhtml :doctype => {:type=>:xhtml, :version=>"1.0", :strict=>false} do
+	head do
+	  title "Sample Site"
+	  stylesheets :base, :links
+	  #COMMENTS DONT GET EVAL'd
+	end
+
+	body do
+	  textilize "*Header*"
+    div "this is our first html doc!"
+    p "its really awesome"
+    myvar = "withconcat"
+    p do
+      inline "dot operator #{myvar}"
+      span "nested span"
+    end
+	end
+end

@@ -1,0 +1,25 @@
+rss{
+  title 'Liftoff News'
+  link 'http://liftoff.msfc.nasa.gov/'
+  description 'Liftoff to Space Exploration.'
+  language 'en-us'
+  pubDate 'Tue, 10 Jun 2003 04:00:00 GMT'
+  lastBuildDate 'Tue, 10 Jun 2003 09:41:01 GMT'
+  docs 'http://blogs.law.harvard.edu/tech/rss'
+  generator 'rbml'
+  managingEditor 'editor@example.com'
+  webMaster 'webmaster@example.com'
+  item {
+    title 'Star City'
+    link 'http://liftoff.msfc.nasa.gov/news/2003/news-starcity.asp'
+    description {
+			cdata %(How do Americans get ready to work with Russians aboard the
+			International Space Station? They take a crash course in culture, language
+			and protocol at Russia's Star City.)
+		}
+    pubDate 'Tue, 03 Jun 2003 09:39:21 GMT'
+    guid 'http://liftoff.msfc.nasa.gov/2003/06/03.html#item573'
+  }
+}
+
+

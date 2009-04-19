@@ -1,0 +1,26 @@
+
+div do
+  inline "partial text"
+  ul :id=>"partiallist", :class => 'cool' do
+    li do 
+      inline "hello world"
+      br 
+      i "how are you"
+    end
+    li "item one"
+    li do
+      inline "item two"
+      a :href=>"http://google.com" do
+        inline "with link"
+      end
+    end
+  end
+  div :id=>"test" do
+      i "test"
+  end
+  include "sublist/sublist"
+end
+
+include "sublist/sublist"
+
+div { i 'what' }

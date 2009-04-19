@@ -1,0 +1,13 @@
+# this file maps language extentions
+# to the major class responsible for
+# them. each extention should have a
+# language definition inside the
+# languages/major_type/ folder.
+#
+# ex:
+#   .rbml/languages/doc/xhtml.rb
+
+:xhtml: Doc
+:rss: Doc
+:shell: Shell
+:script: Script

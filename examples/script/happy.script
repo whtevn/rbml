@@ -1,0 +1,56 @@
+#:examples/shell/happy_shell.rbml 
+com the test a best -n name
+test -o option #/* this is a comment and it
+#will last until the comment is over
+#even if it just goes for lines and lines */
+# ^ doesn't work yet
+fate
+- 3
+check  # check will ask a single [Y/n] question    
+- no way, dude ?  # unfortunately, we can't use the 'n'
+       # here to pre-load the answer for 'check',
+       # fortunately, comments like these work.
+       # also, tabbing for completion works.
+#exit   # so at least i have that going for me
+
+__END__
+
+tail output & bin/rbml examples/script/happy.script -g > output
+
+http://ncurses-ruby.berlios.de/
+
+whatevan: i want a prompt preloaded with some text
+[03:16am] SAS_Spidey01 left the chat room. (Remote closed the connection)
+[03:17am] blink: what manveru said then.
+[03:17am] whatevan: that a user can backspace over and change
+[03:17am] manveru: ouh
+[03:17am] manveru: that you cannot do
+[03:17am] whatevan: thats what i thought...
+[03:17am] whatevan: sad
+[03:17am] blink: http://de.ifun.ru/m/j/mj9sqhh3.jpg
+[03:17am] manveru: unless you use curses
+[03:17am] xsdg: manveru: I would imagine you can with readline --- if it can do tab-complete, it seems like that should be trivial
+[03:18am] • blink notes that is american oriented.
+[03:18am] manveru: xsdg: how does tab-complete help?
+[03:18am] xsdg: manveru: tab complete means "the code can change what is returned at the prompt"
+[03:19am] manveru: if you hit tab
+[03:19am] xsdg: manveru: which this is just an instance of
+[03:19am] whatevan: oh i need readline...
+[03:19am] whatevan: sorry, that took me a second. that makes sense.
+[03:19am] manveru: require 'readline'; input = Readline.readline('stuff> ', history = true)
+[03:19am] • blink goes to research openid 2.0
+[03:20am] whatevan: sweet jesus i love the internet
+[03:20am] manveru: xsdg: it's the _only_ instance
+[03:20am] • blink really needs to implement openid 1.0 in a non-javaish library.
+[03:20am] xsdg: manveru: err... you're not making much sense right now.  what is "it" in this case?
+[03:21am] manveru: xsdg: hitting tab
+[03:21am] robink left the chat room. (Read error: 110 (Connection timed out))
+[03:22am] xsdg: manveru: oh.  my comment was not related to your response.  my point was that "if readline can allow some code to modify what's been 'entered', then it means that what whatevan wants is possible (though it may or may not require some hacking)"
+[03:22am] whatevan: so, at the very least, one would think that i could trigger "hitting tab" to respond with some buffer with some manner of callback on gets
+[03:22am] whatevan: is that fair, xsdg?
+[03:22am] xsdg: whatevan: iirc, readline's tab-complete behavior is just implemented in a block, so "yes"
+[03:22am] xsdg: whatevan: though not gets, I don't think
+[03:23am] xsdg: (Readline.readline, from what manveru mentioned above)
+[03:23am] whatevan: sounds good. i'll take it, anyway. definitely looks better than the ways i've been trying
+[03:24am] whatevan: well, i'm drunk and tired and that's about the best news i've heard all day. i'm going to bed now. thanks everyone :)
+[03:24am] manveru: and if you want the whole line you gotta set Readline.completer_word_break_characters

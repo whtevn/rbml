@@ -1,0 +1,65 @@
+shell :name=>"happyshell", :prompt=>"^_^ " do
+  set :unknown_command do |method, args|
+    puts "unknown command: called #{method} with #{args}"
+  end
+  
+  set :check do 
+    puts make_sure('do you really want to do that?')
+  end
+
+  set :test do |args|
+    flag(:option => 'o'){|value|
+      puts value.inspect
+    }
+    fudg
+    process args
+  end
+  
+  set :com do |args|
+    flag(:help => 'h'){
+      puts 'help docs for this command'
+    }
+    flag(:name => 'n'){ |value|
+      puts "the name you gave was #{value}"
+    }
+    key(:test){
+        puts 'good. the test option is running.'
+    }
+    key(:best){ puts 'great. now the best one is.' }
+
+    process args
+
+    # now have access  to remaining arguments as follows:
+    puts "\nremaining individual arguments (after flags): #{remaining_arguments.inspect}"
+    puts "\njoined remaining arguments (after flags): #{remaining_argument}"
+
+    # and also the active keys and flags
+    puts "\nactive options: #{active_options}"
+  end
+
+  set :fate do
+    case choice('please choose your fate: ', ['happy', 'sad', 'random', 'happenstance'])
+    when 'happy' : puts 'this is fantastic!'
+    when 'happenstance' : puts 'this is how things go'
+    when 'sad'   : puts 'aww, your doggie died!'
+    when 'random' : puts 'you turned 40 yesterday'
+    else
+      puts "\nyou made a stupid choice there, buddy"
+    end
+  end
+
+  set :clear do
+    system 'clear'
+  end
+
+  set :help do
+    puts "put helpdocs here"
+  end
+
+  set :quit do
+    exit
+  end
+  set :exit do
+    exit
+	end
+end

@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+$LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
+
+$template_dir = File.dirname(ARGV[0]) if ARGV[0]
+
+ENV['RBML'] ||= ENV['HOME']+'/.rbml'
+if ARGV.include?("-f") or not File.exist?(ENV['RBML']) and not File.directory?(ENV['RBML'])
+	FileUtils.mkdir ENV['RBML']
+  FileUtils.cp_r File.expand_path(File.expand_path(File.dirname(__FILE__))+'/../languages'), ENV['RBML']+"/languages"
+  FileUtils.cp_r File.expand_path(File.expand_path(File.dirname(__FILE__))+'/../lib/local'), ENV['RBML']+"/lib"
+  FileUtils.cp_r File.expand_path(File.expand_path(File.dirname(__FILE__))+'/../examples'), ENV['RBML']+"/examples"
+  FileUtils.cp_r File.expand_path(File.expand_path(File.dirname(__FILE__))+'/../config'), ENV['RBML']+"/config"
+end
+
+@gem_only = true if ARGV.include?("-g") or ARGV.include?("--gem")
+
+require File.dirname(__FILE__)+'/../lib/rbml'
+file = ARGV.select {|a| a =~ /^[^-]/ }.first
+$script_extention = file.gsub(/^.+\./, '')
+
+if ARGV.include?("-p") or ARGV.include?("--print")
+	puts ::Rbml::Processor.run(file)
+else
+	::Rbml::Processor.run(file)
+end

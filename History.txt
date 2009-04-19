@@ -1,0 +1,22 @@
+== 0.0.5.1 / 2007-02-01
+
+* cleaned up the gem a bit
+* able to run exammples now
+
+== 0.0.5 / 2007-01-29
+
+* successfully processing different types of files
+	* command line
+	* text processing 
+
+== 0.0.2 / 2007-01-28
+
+* load & require fixes
+* added charset method to Xhtml
+
+== 0.0.1 / 2007-01-28
+
+* Rbml is born
+	* There was much rejoicing
+
+

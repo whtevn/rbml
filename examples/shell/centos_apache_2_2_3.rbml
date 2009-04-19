@@ -1,0 +1,33 @@
+shell "*Install Apache*" do
+  cd '~/src' do
+    download "http://apache.roweboat.net/httpd/httpd-2.2.3.tar.gz"
+    unpack 'httpd-2.2.3.tar.gz', :verbose=>true do
+      configure :prefix => '/usr/local/apache2' , 
+                "enable-mods-shared" => "all", 
+                "with-suexec-caller" => "apache",
+                "with-suexec-docroot"=>"/var/www", 
+                "with-suexec-userdir"=>"httpdocs",
+                "with-suexec-bin"=>"/usr/local/apache2/bin/suexec",
+                :sbindir =>"/usr/local/apache2/sbin", 
+                :flags => ["enable-deflate", "enable-proxy", "enable-proxy-balancer", 
+                             "enable-fastcgi", "with-gettext", "enable-xml", "with-libxml", "enable-suexec"]
+
+      make
+      make :install
+    end
+  end
+end
+
+__END__
+*Install apache*
+cd ~/src
+curl -O http://apache.roweboat.net/httpd/httpd-2.2.3.tar.gz
+tar xvzf httpd-2.2.3.tar.gz
+cd httpd-2.2.3
+./configure --prefix=/usr/local/apache2 --enable-mods-shared=all --enable-deflate --enable-proxy \
+--enable-proxy-balancer --enable-fastcgi --with-gettext --enable-xml --with-libxml --enable-suexec \
+--with-suexec-caller=apache --with-suexec-docroot=/var/www --with-suexec-userdir=httpdocs \
+--sbindir=/usr/local/apache2/sbin --with-suexec-bin=/usr/local/apache2/bin/suexec
+make
+make install
+cd ..

@@ -1,0 +1,25 @@
+xhtml :doctype => {:type=>:xhtml, :version=>"1.0", :strict=>false} do
+	head do
+	  title "Bridgewater Golf Club"
+	  stylesheets :base, :links, :membership, :contact
+	  charset 'utf-8'
+	end
+
+	body do
+	  t "*Header*"
+    div "this is our first html doc!"
+    p "its really awesome"
+    myvar = "withconcat"
+    p do
+      if myvar != 'withconcat'
+        inline "dot operator #{myvar}"
+      else
+        inline 'this is in an if statement'
+      end 
+      span "nested span"
+    end
+    include "partial"
+	end
+end
+
+
